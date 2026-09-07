@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Une invitation t’attend 🎉</title>
+
+  <!-- APERÇU WHATSAPP / MESSENGER -->
+  <meta property="og:title" content="Une invitation t’attend 🎉">
+  <meta
+    property="og:description"
+    content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌"
+  >
+
+  <meta
+    property="og:image"
+    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
+  >
+
+  <meta
+    property="og:image:secure_url"
+    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
+  >
+
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Une invitation t’attend 🎉">
+  <meta
+    name="twitter:description"
+    content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌"
+  >
+  <meta
+    name="twitter:image"
+    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
+  >
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #5c2695;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 500px;
+      width: 100%;
+      background: #fff8df;
+      border: 4px solid #111;
+      border-radius: 24px;
+      padding: 28px 20px;
+      box-shadow: 8px 8px 0 #111;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      color: #5c2695;
+      font-size: 30px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .loader {
+      margin: 22px auto 0;
+      width: 46px;
+      height: 46px;
+      border: 6px solid #ddd;
+      border-top-color: #ff2d8d;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>Ton invitation arrive 🎉</h1>
+    <p>Ouverture en cours...</p>
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+
+    var invite = params.get("invite");
+
+    var destination =
+      "https://script.google.com/macros/s/AKfycbzJAIg7CAtPqah4cUIAxiBr43LsJKw7NFa3AO3zBApvWtNoc4eorGzOTN9Pw83C_vLn/exec";
+
+    if (invite) {
+      destination += "?invite=" + encodeURIComponent(invite);
+    }
+
+    setTimeout(function() {
+      window.location.replace(destination);
+    }, 700);
+  </script>
+
+</body>
+</html>
