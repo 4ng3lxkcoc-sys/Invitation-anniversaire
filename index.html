@@ -5,36 +5,24 @@
 
   <title>Une invitation t’attend 🎉</title>
 
-  <!-- APERÇU WHATSAPP / MESSENGER -->
+  <!-- Aperçu WhatsApp -->
   <meta property="og:title" content="Une invitation t’attend 🎉">
-  <meta
-    property="og:description"
-    content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌"
-  >
+  <meta property="og:description" content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌">
 
-  <meta
-    property="og:image"
-    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
-  >
+  <meta property="og:image"
+        content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200">
 
-  <meta
-    property="og:image:secure_url"
-    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
-  >
+  <meta property="og:image:secure_url"
+        content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200">
 
   <meta property="og:image:type" content="image/png">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Une invitation t’attend 🎉">
-  <meta
-    name="twitter:description"
-    content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌"
-  >
-  <meta
-    name="twitter:image"
-    content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200"
-  >
+  <meta name="twitter:description" content="Une invitation pour un anniversaire t’attend... Découvre-la ici 💌">
+  <meta name="twitter:image"
+        content="https://lh3.googleusercontent.com/d/1kpV60QM609Qcsah3DolNTQrQdfgcqOED=w1200">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,8 +31,7 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       min-height: 100%;
       font-family: Arial, Helvetica, sans-serif;
@@ -109,20 +96,38 @@
   </div>
 
   <script>
-    var params = new URLSearchParams(window.location.search);
+    // Récupère le code après ?invite=
+    const params = new URLSearchParams(window.location.search);
+    const invite = params.get("invite");
 
-    var invite = params.get("invite");
-
-    var destination =
+    // Adresse de l'invitation Apps Script
+    const appsScriptUrl =
       "https://script.google.com/macros/s/AKfycbzJAIg7CAtPqah4cUIAxiBr43LsJKw7NFa3AO3zBApvWtNoc4eorGzOTN9Pw83C_vLn/exec";
 
-    if (invite) {
-      destination += "?invite=" + encodeURIComponent(invite);
-    }
+    // Redirection
+    if (invite && invite.trim() !== "") {
 
-    setTimeout(function() {
-      window.location.replace(destination);
-    }, 700);
+      const destination =
+        appsScriptUrl +
+        "?invite=" +
+        encodeURIComponent(invite.trim());
+
+      setTimeout(function () {
+        window.location.href = destination;
+      }, 700);
+
+    } else {
+
+      // Si aucun code n'est présent, on ne redirige PAS.
+      document.querySelector("h1").textContent =
+        "Oups ! 😢";
+
+      document.querySelector("p").textContent =
+        "Le code de ton invitation est manquant.";
+
+      document.querySelector(".loader").style.display =
+        "none";
+    }
   </script>
 
 </body>
